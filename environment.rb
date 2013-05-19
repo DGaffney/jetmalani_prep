@@ -2,6 +2,9 @@
 require 'irb'
 require 'hashie'
 require 'json'
+require 'geocoder'
+require_relative '../secrets/keys'
+
 Dir[File.dirname(__FILE__) + '/extensions/*.rb'].each {|file| require file }
 
 @data = Hashie::Mash[JSON.parse(File.read(File.dirname(__FILE__) + "/input_data/social_network_analysis.json"))]

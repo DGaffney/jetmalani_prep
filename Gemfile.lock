@@ -1,5 +1,7 @@
 GEM
+  remote: https://rubygems.org/
   specs:
+    geocoder (1.1.8)
     hashie (2.0.3)
     json (1.7.7)
 
@@ -7,5 +9,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  geocoder
   hashie
   json
