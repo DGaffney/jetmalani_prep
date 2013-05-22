@@ -1,23 +1,35 @@
 load '../../environment.rb'
-Geocoder.configure(:lookup => :yandex)
+Geocoder.configure(:lookup => :google, :timeout => 3) # -_-
 
 users = @data.network.values.flatten.collect(&:user)
-cache = {}
+geocache = {}
+
+antarctica = Geocoder.search('antarctica')
 
 users.each do |user|
-  initial = user.location
-  
-  if cache.has_key?(initial)
-    tgeo = cache[initial]
-  else
-    tgeo = Geocoder.search(initial).first
-    cache[initial] = tgeo
+  loc = user.location.to_s
+
+  if loc.empty?
+    user.geo = "nope"
+    next
   end
 
-  user.geo = tgeo
+  if geocache.has_key?(loc)
+    user.geo = geocache[loc]
+  else
+    sleep 1
+    geocache[loc] = Geocoder.search(loc)
+    user.geo = geocache[loc]
+    print "#{loc}\n"
+  end
 end
 
 output = users.collect(&:geo).counts.to_json
 f = File.new(File.dirname(__FILE__) + '/output/location_counts_refined.json', "w")
 f.write(output)
 f.close
+
+u = users.to_json
+g = File.new(File.dirname(__FILE__) + '/output/geousers.json', "w")
+g.write(u)
+g.close
