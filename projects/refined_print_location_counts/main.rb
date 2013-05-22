@@ -10,7 +10,7 @@ users.each do |user|
   loc = user.location.to_s
 
   if loc.empty?
-    user.geo = "nope"
+    user.geo = antarctica
     next
   end
 
