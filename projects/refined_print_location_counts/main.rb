@@ -1,5 +1,5 @@
 load '../../environment.rb'
-Geocoder.configure(:lookup => :google, :timeout => 3) # -_-
+Geocoder.configure(:lookup => :google, :timeout => 3)
 
 users = @data.network.values.flatten.collect(&:user)
 geocache = {}

@@ -1,9 +1,13 @@
 #usage: bundle exec ruby environment.rb
 require 'irb'
+require 'mongo_mapper'
 require 'hashie'
 require 'json'
 require 'geocoder'
 require_relative '../secrets/keys'
+
+MongoMapper.connection = Mongo::Connection.new('127.0.0.1', 27017)
+MongoMapper.database = "twitter"
 
 Dir[File.dirname(__FILE__) + '/extensions/*.rb'].each {|file| require file }
 
