@@ -9,8 +9,7 @@ Account.all.each do |account|
 
   account.friends.each do |friend|
     edge = {:source => account.id_str, :target => friend.to_s}
-    converse = {:source => friend.to_s, :target => account.id_str}
-    edges << edge unless edges.include?(converse)
+    edges << edge
   end
 
   account.followers.each do |follower|
@@ -18,6 +17,8 @@ Account.all.each do |account|
     edges << edge
   end
 end
+
+edges.uniq!
 
 output = {:nodes => nodes, :edges => edges}.to_json
 f = File.new(File.dirname(__FILE__) + '/output/base_network_graph.json', "w")
