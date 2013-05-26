@@ -21,6 +21,8 @@ Account.all.each do |account|
   end
 end
 
+nodes.uniq!
+
 output = {:nodes => nodes, :edges => edges}.to_json
 f = File.new(File.dirname(__FILE__) + '/output/location_superimposed_network_graph.json', "w")
 f.write(output)
