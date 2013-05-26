@@ -1,4 +1,4 @@
-load '../../environment.rb'
+load '../environment.rb'
 Geocoder::Configuration.cache = Hash.new
 
 @data.network.values.flatten.collect(&:user).each do |user|
