@@ -21,6 +21,6 @@ end
 edges.uniq!
 
 output = {:nodes => nodes, :edges => edges}.to_json
-f = File.new(File.dirname(__FILE__) + '/output/base_network_graph.json', "w")
+f = File.new(File.dirname(__FILE__) + '../outputs/base_network_graph.json', "w")
 f.write(output)
 f.close
