@@ -1,5 +1,29 @@
 class Array
-  
+
+  #i just realized all these methods are destructive...
+
+  def combinate
+    all = []
+    loop do
+      current = self.shift
+      break if current.nil?
+      begin
+        last_pass = current.length
+        self.each do |arr|
+          if (current & arr).empty?
+            next
+          else
+            current = current | arr
+            self.delete(arr)
+          end
+        end
+      end while current.length > last_pass
+      all << current
+    end
+    return all
+  end
+
+
   def median
     return nil if self.empty?
     self.sort!

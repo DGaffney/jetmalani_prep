@@ -21,7 +21,7 @@ GEM
       activemodel (~> 3.0)
       activesupport (~> 3.0)
       plucky (~> 0.5.2)
-    multi_json (1.7.3)
+    multi_json (1.7.4)
     plucky (0.5.2)
       mongo (~> 1.5)
 

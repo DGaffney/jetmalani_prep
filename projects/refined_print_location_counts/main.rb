@@ -25,7 +25,7 @@ users.each do |user|
 end
 
 output = users.collect(&:geo).counts.to_json
-f = File.new(File.dirname(__FILE__) + '../outputs/location_counts_refined.json', "w")
+f = File.new(File.dirname(__FILE__) + '/output/location_counts_refined.json', "w")
 f.write(output)
 f.close
 

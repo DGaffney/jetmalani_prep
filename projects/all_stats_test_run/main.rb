@@ -8,6 +8,6 @@ end
 
 stats = fields.keep_if { |key, arr| arr.first.is_a? Numeric }
 output = stats.update(stats) { |key, arr| arr.all_stats }.to_json
-f = File.new(File.dirname(__FILE__) + '../outputs/all_stats_test_run.json', "w")
+f = File.new(File.dirname(__FILE__) + '/output/all_stats_test_run.json', "w")
 f.write(output)
 f.close
