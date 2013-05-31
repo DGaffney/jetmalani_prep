@@ -4,6 +4,7 @@ require 'mongo_mapper'
 require 'hashie'
 require 'json'
 require 'geocoder'
+require 'ap'
 require_relative '../secrets/keys'
 
 MongoMapper.connection = Mongo::Connection.new('127.0.0.1', 27017)

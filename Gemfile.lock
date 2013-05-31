@@ -7,6 +7,7 @@ GEM
     activesupport (3.2.13)
       i18n (= 0.6.1)
       multi_json (~> 1.0)
+    awesome_print (1.1.0)
     bson (1.8.6)
     bson_ext (1.8.6)
       bson (~> 1.8.6)
@@ -29,6 +30,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  awesome_print
   bson_ext
   geocoder
   hashie

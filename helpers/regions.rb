@@ -5,7 +5,23 @@ sets = Account.all.collect do |account|
   Account.near(account, 30).all.collect(&:id_str)
 end
 
-sets.compact!.combinate
+clusters = sets.compact!.combinate
+
+regions = clusters.collect do |cluster|
+  points = cluster.collect { |id| Account.find_by_id_str(id).to_coordinates }
+  coordinates = Geocoder::Calculations.geographic_center(points)
+  geo = Geocoder.search(coordinates)
+  sleep 0.5
+  region = {
+    :coordinates => coordinates,
+    :country => geo.first.country,
+    :state => geo.first.state,
+    :city => geo.first.city,
+    :address => geo.first.address,
+    :count => points.count,
+    :accounts => cluster
+  }
+end
 
 # made array method for array of arrays:
 # it checks for intersections among the 
