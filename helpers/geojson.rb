@@ -4,7 +4,7 @@ features = Account.all.collect do |account|
   next if account.geocoded? == false
   {
     "type" => "Feature",
-    "geometry" => { "type" => "Point", "coordinates" => account.to_coordinates },
+    "geometry" => { "type" => "Point", "coordinates" => account.coordinates },
     "properties" => { "id_str" => account.id_str, "name" => account.name, "location" => account.location, "screen_name" => account.screen_name}
   }
 end
